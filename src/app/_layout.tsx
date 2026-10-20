@@ -1,7 +1,8 @@
-import { Redirect, Stack, useSegments } from "expo-router"
+import { Color, DarkTheme, DefaultTheme, Redirect, Stack, ThemeProvider, useSegments } from "expo-router"
 import { ClerkProvider, useAuth } from "@clerk/expo"
 import { tokenCache } from "@clerk/expo/token-cache"
 import "../../global.css"
+import { useColorScheme } from "react-native"
 
 
 const publishableKey = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY!
@@ -11,9 +12,14 @@ if (!publishableKey) {
 }
 
 export default function RootLayout() {
+
+  const colorScheme = useColorScheme()
+
   return (
     <ClerkProvider publishableKey={publishableKey} tokenCache={tokenCache}>
-       <Stack screenOptions={{ headerTitle: "Grocify" }} />
+      <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
+        <Stack screenOptions={{ headerShown: false }} />
+      </ThemeProvider>
     </ClerkProvider>
   )
 }

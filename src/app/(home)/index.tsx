@@ -8,7 +8,7 @@ const index = () => {
   const { signOut } = useClerk()
 
   return (
-    <View className='flex justify-center items-center gap-2'>
+    <View className='flex-1 justify-center items-center gap-2'>
       <Text> Welcome !</Text>
       
       <Show when="signed-out">
