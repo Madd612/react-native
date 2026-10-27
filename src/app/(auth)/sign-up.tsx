@@ -53,7 +53,7 @@ export default function MainScreen() {
   }
 
   if (isSignedIn) {
-    return <Redirect href={'/(home)'} />
+    return <Redirect href={'/(tabs)'} />
   }
 
   if (isVerifying) {

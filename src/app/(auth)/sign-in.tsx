@@ -59,18 +59,9 @@ export default function SignInScreen() {
       }
     } catch (err: any) {
       // Catch and display any errors (e.g., incorrect password)
-      setError(err?.errors?.[0]?.message || 'An error occurred during sign-in.');
+      setError('An error occurred during sign-in.');
     }
   }
-
-  const onSocialAuthPress = async (strategy: SocialAuthStrategyOAuth) => {
-    try {
-      await handleSocialAuth(strategy)
-    } catch (err: any) {
-      setError(err?.message || 'An error occurred during social sign-in.')
-    } 
-  }
-
 
   return (
     <SafeAreaView className='flex-1 justify-center items-center bg-secondary gap-8' edges={["top"]}>
