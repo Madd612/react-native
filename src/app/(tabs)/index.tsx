@@ -1,3 +1,4 @@
+import { useGroceryStore } from '@/store/grocery-store'
 import { Show, useClerk, useUser } from '@clerk/expo'
 import { Link } from 'expo-router'
 import { Pressable, Text, View } from 'react-native'
@@ -6,6 +7,8 @@ const index = () => {
 
   const { user } = useUser()
   const { signOut } = useClerk()
+
+  const { loadItems, isLoading } = useGroceryStore()
 
   return (
     <View className='flex-1 justify-center items-center gap-2'>
