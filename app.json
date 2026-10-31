@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "1-grocify",
-    "slug": "1-grocify",
+    "name": "Grocify",
+    "slug": "Grocify",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
