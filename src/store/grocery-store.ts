@@ -1,4 +1,5 @@
 import { create } from "zustand"
+import { apiFetch } from "@/lib/api-client"
 
 export type GroceryCategory = "Produce" | "Dairy" | "Bakery" | "Pantry" | "Snacks" | "Frozen" | "Beverages"
 export type GroceryPriority = "low" | "medium" | "high"
@@ -42,7 +43,7 @@ export const useGroceryStore = create<GroceryStore>((set, get)=> ({
   loadItems: async ()=> {
     set({ isLoading: true, error: null })
     try {
-      const res = await fetch("/api/items")
+      const res = await apiFetch("/api/items")
       const payload = (await res.json()) as ItemsResponse
 
       if (!res.ok) {
@@ -60,7 +61,7 @@ export const useGroceryStore = create<GroceryStore>((set, get)=> ({
   addItem: async (input) => {
     set({ error: null })
     try {
-      const res = await fetch("/api/items", {
+      const res = await apiFetch("/api/items", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -86,7 +87,7 @@ export const useGroceryStore = create<GroceryStore>((set, get)=> ({
     const nextQty = Math.max(1, quantity)
     set({ error: null })
     try {
-      const res = await fetch(`/api/items/${id}`, {
+      const res = await apiFetch(`/api/items/${id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ quantity: nextQty })
@@ -110,7 +111,7 @@ export const useGroceryStore = create<GroceryStore>((set, get)=> ({
     const nextPurchased = purchased ?? !currentItem.purchased
     set({ error: null })
     try {
-      const res = await fetch(`/api/items/${id}`, {
+      const res = await apiFetch(`/api/items/${id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ purchased: nextPurchased })
@@ -131,7 +132,7 @@ export const useGroceryStore = create<GroceryStore>((set, get)=> ({
   removeItem: async (id) => {
     set({ error: null })
     try {
-      const res = await fetch(`/api/items/${id}`, {
+      const res = await apiFetch(`/api/items/${id}`, {
         method: "DELETE"
       })
       if (!res.ok) {
@@ -149,7 +150,7 @@ export const useGroceryStore = create<GroceryStore>((set, get)=> ({
   clearPurchased: async () => {
     set({ error: null })
     try {
-      const res = await fetch("/api/items/clear-purchased", {
+      const res = await apiFetch("/api/items/clear-purchased", {
         method: "POST"
       })
       if (!res.ok) {

@@ -3,12 +3,17 @@ import ListHeroCard from '@/components/list/ListHeroCard'
 import PendingItemCard from '@/components/list/PendingItemCard'
 import TabScreenBackground from '@/components/TabScreenBackground'
 import { useGroceryStore } from '@/store/grocery-store'
+import { useEffect } from 'react'
 import { FlatList, Text, View } from 'react-native'
 
 const index = () => {
 
-  const { items } = useGroceryStore()
+  const { items, loadItems } = useGroceryStore()
   const pendingItems = items.filter(item => !item.purchased)
+
+  useEffect(() => {
+    void loadItems()
+  }, [loadItems])
 
   return (
     <FlatList

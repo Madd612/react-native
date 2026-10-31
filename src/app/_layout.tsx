@@ -5,6 +5,7 @@ import "../../global.css"
 import { useColorScheme } from "react-native"
 import { KeyboardProvider } from "react-native-keyboard-controller"
 import * as Sentry from '@sentry/react-native';
+import { ApiAuthBridge } from "@/lib/api-client"
 
 const publishableKey = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY!
 
@@ -14,7 +15,7 @@ if (!publishableKey) {
 
 
 Sentry.init({
-  dsn: process.env.EXPO_SENTRY_PUBLIC_DSN,
+  dsn: process.env.EXPO_PUBLIC_SENTRY_DSN,
 
   sendDefaultPii: true,
   // Enable Logs
@@ -32,6 +33,7 @@ const RootLayout = () => {
     <ClerkProvider publishableKey={publishableKey} tokenCache={tokenCache}>
       <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
         <KeyboardProvider>
+          <ApiAuthBridge />
           <Stack screenOptions={{ headerShown: false }} />
         </KeyboardProvider>
       </ThemeProvider>

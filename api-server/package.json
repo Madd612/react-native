@@ -1,0 +1,25 @@
+{
+  "name": "grocify-api",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "db:push": "drizzle-kit push"
+  },
+  "dependencies": {
+    "@clerk/backend": "^2.0.0",
+    "@neondatabase/serverless": "^1.2.0",
+    "drizzle-orm": "^0.45.4",
+    "next": "^16.0.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.2.0",
+    "drizzle-kit": "^0.31.11",
+    "typescript": "^5.9.0"
+  }
+}
