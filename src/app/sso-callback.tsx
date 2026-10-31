@@ -8,7 +8,9 @@ export default function SSOCallbackScreen() {
     return null
   }
 
+  if (isSignedIn) return <Redirect href="/" />
+
   return (
-    <Redirect href={isSignedIn ? '/(home)' : '/(auth)/sign-in'} />
+    <Redirect href={"/(auth)/sign-in"} />
   )
 }

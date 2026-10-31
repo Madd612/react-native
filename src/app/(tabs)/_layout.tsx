@@ -7,6 +7,9 @@ import { useColorScheme } from "nativewind"
 const TabsLayout = () => {
 
   const { isSignedIn, isLoaded } = useAuth()
+  const colorScheme = useColorScheme()
+  const isDark = colorScheme.colorScheme === "dark"
+  const tabTintColor = isDark ? "hsl(142 70% 54%)" : "hsl(147 75% 33%)"
 
   if (!isLoaded) {
     return null
@@ -15,10 +18,6 @@ const TabsLayout = () => {
   if (!isSignedIn) {
     return <Redirect href="/(auth)/sign-in" />
   }
-
-  const colorScheme = useColorScheme()
-  const isDark = colorScheme.colorScheme === "dark"
-  const tabTintColor = isDark ? "hsl(142 70% 54%" : "hsl(147 75% 33%)"
 
   return (
     <NativeTabs tintColor={tabTintColor}>

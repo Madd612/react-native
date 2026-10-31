@@ -36,33 +36,6 @@ export default function SignInScreen() {
 
   const isLoading = isGoolgleClicked || isAppleClicked
 
-  const [emailAddress, setEmailAddress] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-
-  const onSignInPress = async () => {
-    if (!emailAddress || !password) {
-      setError('Please enter both email and password.')
-      return
-    }
-    try {
-      // 1. Attempt to sign in with email and password
-      const result = await signIn.password({
-        emailAddress,
-        password,
-      });
-
-      // 2. Check if the sign-in is fully complete
-      if (!result.error) {
-        await signIn.finalize();
-        // The root layout observer will automatically push them to the home screen/tabs
-      }
-    } catch (err: any) {
-      // Catch and display any errors (e.g., incorrect password)
-      setError('An error occurred during sign-in.');
-    }
-  }
-
   return (
     <SafeAreaView className='flex-1 justify-center items-center bg-secondary gap-8' edges={["top"]}>
       {/* Decorative elements */}
@@ -78,7 +51,7 @@ export default function SignInScreen() {
 
         <View className="rounded-3xl self-center mx-6 bg-white/10 backdrop:blur-md p-3 w-full border border-white/20">
           <Image source={require("@/assets/images/auth.png")} 
-            className='w-full h-72 object-contain'
+            className='w-full max-h-96  object-contain'
           />
         </View>
       </View>
@@ -90,38 +63,7 @@ export default function SignInScreen() {
         </View>
         <Text className='text-center text-sm text-secondary-foreground'>Sign in and jump right into your personalized grocery experience.</Text>
 
-        <View className="flex-col gap-3">
-          <TextInput
-            className="border border-border rounded-xl px-4 py-3 text-base text-secondary-foreground bg-input"
-            autoCapitalize="none"
-            value={emailAddress}
-            placeholder="Enter email"
-            onChangeText={setEmailAddress}
-          />
-
-          <TextInput
-            className="border border-border rounded-xl px-4 py-3 text-base text-secondary-foreground bg-input"
-            value={password}
-            placeholder="Enter password"
-            secureTextEntry={true}
-            onChangeText={setPassword}
-          />
-
-          <Text className="text-secondary-foreground">Don't have an account?{' '}
-            <Text className="text-primary-foreground" onPress={() => router.push('/(auth)/sign-up')}>Sign Up</Text>
-          </Text>
-
-          {error ? <Text className="text-red-500">{error}</Text> : null}
-
-          <Pressable onPress={onSignInPress} 
-            className="bg-primary/55 text-primary active:bg-primary/90 rounded-2xl py-3 px-4"
-          >
-            <Text className="text-center font-semibold">Sign In</Text>
-          </Pressable>
-        </View>
-
         <View className="flex-col gap-1">
-          <Text className='text-center text-gray-600'>-- Or --</Text>
 
           <SocialAuthButton 
             onPress={() => handleSocialAuth('oauth_google')}

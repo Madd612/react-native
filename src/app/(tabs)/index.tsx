@@ -3,15 +3,9 @@ import ListHeroCard from '@/components/list/ListHeroCard'
 import PendingItemCard from '@/components/list/PendingItemCard'
 import TabScreenBackground from '@/components/TabScreenBackground'
 import { useGroceryStore } from '@/store/grocery-store'
-import { Show, useClerk, useUser } from '@clerk/expo'
-import { Link } from 'expo-router'
-import { FlatList, Pressable, Text, View } from 'react-native'
-import { ScrollView } from 'react-native-reanimated/lib/typescript/Animated'
+import { FlatList, Text, View } from 'react-native'
 
 const index = () => {
-
-  const { user } = useUser()
-  const { signOut } = useClerk()
 
   const { items } = useGroceryStore()
   const pendingItems = items.filter(item => !item.purchased)
@@ -26,7 +20,7 @@ const index = () => {
       contentInsetAdjustmentBehavior="automatic"
       ListEmptyComponent={<Text className='uppercase text-sm text-muted-foreground'>No pending items</Text>}
       ListHeaderComponent={
-        <View style={{ gap: 14 }}>
+        <View style={{ gap: 14, marginTop: 10 }}>
           <TabScreenBackground />
           <ListHeroCard />
           
