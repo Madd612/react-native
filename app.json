@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Grocify",
-    "slug": "Grocify",
+    "slug": "1-grocify",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -46,11 +46,19 @@
           "project": "1-grocify",
           "organization": "xonvatech"
         }
-      ]
+      ],
+      "@sentry/react-native"
     ],
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
-    }
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "0c1ac7f1-00e4-456c-a5ea-18678c9d1cfd"
+      }
+    },
+    "owner": "xonva-tech"
   }
 }
