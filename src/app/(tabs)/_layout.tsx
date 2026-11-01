@@ -2,6 +2,7 @@ import { useAuth } from "@clerk/expo"
 import { Redirect } from "expo-router"
 import { NativeTabs } from "expo-router/unstable-native-tabs"
 import { useColorScheme } from "nativewind"
+import { ActivityIndicator, View } from "react-native"
 
 
 const TabsLayout = () => {
@@ -12,7 +13,11 @@ const TabsLayout = () => {
   const tabTintColor = isDark ? "hsl(142 70% 54%)" : "hsl(147 75% 33%)"
 
   if (!isLoaded) {
-    return null
+    return (
+      <View className="flex-1 items-center justify-center bg-background">
+        <ActivityIndicator />
+      </View>
+    )
   }
 
   if (!isSignedIn) {
