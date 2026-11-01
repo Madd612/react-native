@@ -10,7 +10,7 @@ import { ScrollView } from 'react-native'
 const insights = () => {
   return (
     <>
-    <ScrollView className='flex-1 bg-background py-4'
+    <ScrollView className='flex-1 bg-background pt-5'
       showsVerticalScrollIndicator={false}
       contentContainerStyle={{ padding: 20, gap: 14}}
       contentInsetAdjustmentBehavior='automatic'

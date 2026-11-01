@@ -67,7 +67,7 @@ export default function SignInScreen() {
   }
 
   return (
-    <SafeAreaView className='flex-1 justify-center items-center bg-secondary gap-8' edges={["top"]}>
+    <SafeAreaView className='flex-1 justify-center items-center bg-secondary gap-8 pt-5' edges={["top"]}>
       {/* Decorative elements */}
       <View className='absolute top-2 -left-10 w-56 h-56 bg-background/40 rounded-full' />
       <View className='absolute top-24 -right-16 w-72 h-72 bg-background/40 rounded-full' />

@@ -17,7 +17,7 @@ const index = () => {
 
   return (
     <FlatList
-      className="flex-1 bg-background"
+      className="flex-1 bg-background pt-5"
       data={pendingItems}
       keyExtractor={item => item.id}
       renderItem={({item}) => <PendingItemCard item={item} />}

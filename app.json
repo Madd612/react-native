@@ -18,7 +18,8 @@
         "monochromeImage": "./assets/images/android-icon-monochrome.png"
       },
       "predictiveBackGestureEnabled": false,
-      "package": "com.anonymous.x1grocify"
+      "package": "com.anonymous.x1grocify",
+      "softwareKeyboardLayoutMode": "pan"
     },
     "web": {
       "output": "server",
