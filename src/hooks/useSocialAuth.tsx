@@ -28,7 +28,10 @@ const useSocialAuth = () => {
        
     } catch (error:any) {
 
-      console.error('Error during social authentication:', error)
+      console.error(
+        'Error during social authentication:',
+        JSON.stringify(error, null, 2),
+      )
       Alert.alert('Sign In Error', 'An error occurred during social sign-in. Please try again.')
 
     } finally {

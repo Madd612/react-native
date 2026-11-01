@@ -60,6 +60,12 @@
         "projectId": "0c1ac7f1-00e4-456c-a5ea-18678c9d1cfd"
       }
     },
-    "owner": "xonva-tech"
+    "owner": "xonva-tech",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/0c1ac7f1-00e4-456c-a5ea-18678c9d1cfd"
+    }
   }
 }

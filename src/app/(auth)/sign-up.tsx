@@ -109,7 +109,7 @@ export default function SignUpScreen() {
         )}
 
         {errorMessage ? (
-          <Text className="mt-3 text-center text-sm text-destructive">{errorMessage}</Text>
+          <Text className="mt-3 text-center text-sm text-destructive bg-white/60 p-2">{errorMessage}</Text>
         ) : null}
 
         <Pressable
