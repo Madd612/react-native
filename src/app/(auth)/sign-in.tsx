@@ -127,6 +127,14 @@ export default function SignInScreen() {
             </Text>
           </Pressable>
 
+          <Text className="mt-3 text-center text-sm text-secondary-foreground">
+            New to Grocify? <Link href="/(auth)/sign-up" className="font-semibold text-primary">Create an account</Link>
+          </Text>
+
+          <Text className="mt-3 text-center text-sm text-secondary-foreground">
+            ---------------------- OR -----------------------
+          </Text>
+
           <SocialAuthButton 
             onPress={() => handleSocialAuth('oauth_google')}
             isLoading={isLoading}
@@ -142,7 +150,7 @@ export default function SignInScreen() {
               className='absolute right-4'
             />
           </SocialAuthButton>
-          <SocialAuthButton
+          {/*<SocialAuthButton
             onPress={() => handleSocialAuth('oauth_apple')}
             isLoading={isLoading}
           >
@@ -156,12 +164,9 @@ export default function SignInScreen() {
             <FontAwesome name="angle-right" size={18} color="#5f6e66" 
               className='absolute right-4'
             />
-          </SocialAuthButton>
+          </SocialAuthButton>*/}
         </View>
 
-        <Text className="mt-3 text-center text-sm text-secondary-foreground">
-          New to Grocify? <Link href="/(auth)/sign-up" className="font-semibold text-primary">Create an account</Link>
-        </Text>
         <Text className="mt-3 text-center text-sm leading-5 text-secondary-foreground">
           By continuing, you agree to our Terms of Service and Privacy Policy.
         </Text>
