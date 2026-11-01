@@ -8,15 +8,22 @@ export const getUserId = async (request: NextRequest) => {
     : null
 
   if (!token) {
+    console.error("Clerk authentication failed: missing Bearer token")
     return null
+  }
+
+  const secretKey = process.env.CLERK_SECRET_KEY
+  if (!secretKey) {
+    throw new Error("CLERK_SECRET_KEY is not configured")
   }
 
   try {
     const claims = await verifyToken(token, {
-      secretKey: process.env.CLERK_SECRET_KEY,
+      secretKey,
     })
     return claims.sub
-  } catch {
+  } catch (error) {
+    console.error("Clerk authentication failed:", error)
     return null
   }
 }

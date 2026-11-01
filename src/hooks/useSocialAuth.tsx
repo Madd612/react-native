@@ -24,7 +24,7 @@ const useSocialAuth = () => {
       }
       
       await setActive({ session: createdSessionId })
-      router.replace('/(home)')
+      router.replace('/')
        
     } catch (error:any) {
 

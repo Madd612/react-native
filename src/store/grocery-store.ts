@@ -51,7 +51,6 @@ export const useGroceryStore = create<GroceryStore>((set, get)=> ({
       }
       set({ items: payload.items, isLoading: false })
     } catch (error) {
-      console.error("Error: " + error)
       set({ error: "Something went wrong"})
     } finally {
       set({ isLoading: false })
@@ -73,12 +72,16 @@ export const useGroceryStore = create<GroceryStore>((set, get)=> ({
       })
       const payload = (await res.json()) as ItemResponse
       if (!res.ok) {
-        throw new Error(`Request failed (${res.status})`)
+        throw new Error(
+          "error" in payload
+            ? String(payload.error)
+            : `Request failed (${res.status})`,
+        )
       }
       set((i)=> ({ items: [payload.item, ...i.items]}))
       return payload.item
     } catch (error) {
-      console.error("Error: " + error)
+      console.error("Failed to add grocery item:", error)
       set({ error: "Something went wrong"})
     }
   },
@@ -100,7 +103,6 @@ export const useGroceryStore = create<GroceryStore>((set, get)=> ({
         items: i.items.map((item)=> item.id === id ? payload.item : item)
       }))
     } catch (error) {
-      console.error("Error: " + error)
       set({ error: "Something went wrong"})
     }
   },
@@ -124,7 +126,6 @@ export const useGroceryStore = create<GroceryStore>((set, get)=> ({
         items: i.items.map((item)=> item.id === id ? payload.item : item)
       }))
     } catch (error) {
-      console.error("Error: " + error)
       set({ error: "Something went wrong"})
     }
   },
@@ -142,7 +143,6 @@ export const useGroceryStore = create<GroceryStore>((set, get)=> ({
         items: i.items.filter((item)=> item.id !== id)
       }))
     } catch (error) {
-      console.error("Error: " + error)
       set({ error: "Something went wrong"})
     }
   },
@@ -159,7 +159,6 @@ export const useGroceryStore = create<GroceryStore>((set, get)=> ({
       const items = get().items.filter((item)=> !item.purchased)
       set({ items })
     } catch (error) {
-      console.error("Error: " + error)
       set({ error: "Something went wrong"})
     }
   },

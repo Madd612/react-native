@@ -37,12 +37,14 @@ const PlannerFormCard = () => {
   }
 
   const createItem = async () => {
-    await addItem({
+    const item = await addItem({
       name: name.trim(),
       category,
       priority,
       quantity: Number(quantity) || 1
     })
+
+    if (!item) return
 
     Alert.alert("Item added", `${name} has been added to your grocery list.`)
 
