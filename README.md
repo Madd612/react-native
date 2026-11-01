@@ -4,6 +4,11 @@ Grocify is a grocery planning android mobile app built with Expo and React Nativ
 
 The repository contains the Expo mobile application, a standalone Next.js API service, and Drizzle database definitions for Neon PostgreSQL.
 
+## Download
+
+Download the latest Android APK from to try it
+[GitHub Releases page](../../releases/latest).
+
 ## Main features
 
 - Create, edit, delete, and purchase grocery items.
